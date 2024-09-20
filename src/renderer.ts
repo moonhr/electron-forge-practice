@@ -1,5 +1,5 @@
-const input = document.getElementById("input")!;
-const sendButton = document.getElementById("sendButton")!;
+const input = document.getElementById("input") as HTMLInputElement;
+const sendButton = document.getElementById("sendButton") as HTMLButtonElement;
 
 // 버튼을 클릭했을 때 ping 이벤트 보내기
 sendButton.addEventListener("click", () => {

@@ -1,7 +1,11 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI", {
-  sendPing: (message) => ipcRenderer.send("ping", message), // ping 이벤트를 메인 프로세스로 보냄
-  onPong: (callback) =>
-    ipcRenderer.on("pong", (event, message) => callback(message)), // 메인 프로세스로부터 pong 이벤트 수신
+  sendPing: (message: string) => ipcRenderer.send("ping", message),
+  onPong: (callback: (message: string) => void) => {
+    ipcRenderer.on(
+      "pong",
+      (event: Electron.IpcRendererEvent, message: string) => callback(message)
+    ); // event와 message에 타입 지정
+  },
 });
