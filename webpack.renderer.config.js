@@ -3,19 +3,24 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/renderer.ts",
+  entry: "./src/renderer.tsx",
   target: "electron-renderer",
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx$/,
         include: /src/,
         use: "ts-loader",
+      },
+      {
+        test: /\.(js|jsx)$/,
+        use: "babel-loader",
+        exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   output: {
     filename: "renderer.js",
