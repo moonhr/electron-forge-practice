@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+  mode: "development",
   entry: "./src/renderer.ts",
   target: "electron-renderer",
   module: {
