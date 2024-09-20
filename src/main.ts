@@ -40,7 +40,7 @@ app.whenReady().then(() => {
   // 렌더러에서 'ping' 이벤트를 받으면 'pong'으로 응답
   ipcMain.on("ping", (event: Electron.IpcMainEvent, arg: string) => {
     console.log("Received in main process:", arg);
-    event.reply("pong", `Received your message: ${arg}`);
+    event.sender.send("pong", `Received your message: ${arg}`);
   });
 });
 
